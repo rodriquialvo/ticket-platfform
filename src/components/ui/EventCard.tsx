@@ -31,7 +31,6 @@ export const EventCard: React.FC<EventCardProps> = ({
 
 
   return (
-    <Link href={paths.event(evento.id)}>
       <Box
         maxW="lg"
         bg="white"
@@ -137,7 +136,7 @@ export const EventCard: React.FC<EventCardProps> = ({
           </Flex>
         </Box>
       </Box>
-    </Link>
+    // </Link>
   );
 };
 

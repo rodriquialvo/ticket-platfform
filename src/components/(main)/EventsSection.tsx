@@ -26,7 +26,7 @@ export const EventsSection = ({
     hasPrevPage
 }: EventsSectionProps) => {
     return (
-        <Box py={12} w="full" display="flex" justifyContent="center" alignItems="center">
+        <Box py={12} w="full" display="flex" alignItems="center" justifyContent="center">
             <Box maxW="7xl" w="full" display="flex" justifyContent="center" alignItems="center">
                 <VStack px={{ base: "100", md: "8", lg: "12" }} gap={8} align="center" w="full">
                     <EventsHeader

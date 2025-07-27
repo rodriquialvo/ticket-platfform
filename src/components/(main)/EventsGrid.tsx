@@ -36,7 +36,9 @@ export const EventsGrid = ({ eventos }: EventsGridProps) => {
       columns={{ base: 1, md: 2, lg: 4 }} 
       gap={8} 
       w="full"
-      // px={{ base: 4, md: 8, lg: 12 }}
+      justifyContent="center"
+      alignItems="center"
+      px={{ base: 12, md: 0,}}
     >
       {eventos.map((evento) => (
         <EventCard 
