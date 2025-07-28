@@ -8,11 +8,11 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <>
       <Navigation />
       {/* Spacer para compensar la navegación fija */}
-      <Box  height="80px" />
+      <Box height="80px" />
       {children}
-    </div>
+    </>
   );
-}``
+}

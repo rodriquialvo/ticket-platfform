@@ -3,10 +3,13 @@ import { useState, useEffect } from 'react';
 export type ScrollDirection = 'up' | 'down' | null;
 
 export function useScrollDirection() {
-  const [scrollDirection, setScrollDirection] = useState<ScrollDirection>(null);
+  const [scrollDirection, setScrollDirection] = useState<ScrollDirection>('up');
   const [prevScrollY, setPrevScrollY] = useState(0);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+    
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
@@ -24,5 +27,6 @@ export function useScrollDirection() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollY]);
 
-  return scrollDirection;
+  // Retornar 'up' durante la hidratación para evitar diferencias
+  return isClient ? scrollDirection : 'up';
 } 

@@ -3,17 +3,15 @@
 import React from 'react';
 import {
   Box,
-  Image,
   Text,
   Button,
-  Badge,
   Flex,
   VStack,
-  HStack,
   Icon,
   Link,
+  Image,
 } from '@chakra-ui/react';
-import { FiCalendar, FiMapPin, FiClock, FiUsers, FiHeart, FiShare2 } from 'react-icons/fi';
+import { FiCalendar, FiMapPin, FiClock } from 'react-icons/fi';
 import { Evento } from '@/services/events/interfaces';
 import { formatDate, formatTime, formatPrice } from '@/utils';
 import paths from '@/constants/routes';
@@ -28,11 +26,9 @@ export const EventCard: React.FC<EventCardProps> = ({
   className,
 }) => {
 
-
-
   return (
+    <Link href={paths.event(evento.id)}>
       <Box
-        maxW="lg"
         bg="white"
         border="1px"
         borderColor="gray.200"
@@ -49,24 +45,15 @@ export const EventCard: React.FC<EventCardProps> = ({
           <Image
             src={evento.imagenUrl}
             alt={evento.nombre}
-            height="260px"
-            width="100%"
+            height={260}
+            width={1000}
             objectFit="cover"
             transition="transform 0.3s"
             _groupHover={{ transform: 'scale(1.05)' }}
-          />
-          {/* Gradient overlay */}
-          <Box
-            position="absolute"
-            bottom="0"
-            left="0"
-            right="0"
-            height="60px"
-            bgGradient="linear(to-t, blackAlpha.600, transparent)"
+            loading="lazy"
           />
         </Box>
-
-        <Box p="6" pb="0" flex="1" display="flex" flexDirection="column">
+        <Box w={"100%"} gap={2} p="4" pb="0" flex={1} display="flex" flexDirection="column">
           <VStack gap="1" align="stretch" display={"flex"} justifyContent={"space-between"} flex={1}>
             <Text
               fontSize={{ base: "sm", md: "md" }}
@@ -77,22 +64,19 @@ export const EventCard: React.FC<EventCardProps> = ({
             >
               {evento.nombre}
             </Text>
-
-            <VStack alignContent="flex-end" gap="1" align="stretch" display={"flex"}>
+            <VStack w={"100%"} alignContent="flex-end" gap="1" align="stretch" display={"flex"}>
               <Flex align="center" gap={1}>
                 <Icon as={FiCalendar} color="blue.500" />
                 <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600" fontWeight="medium">
                   {formatDate(evento.fecha)}
                 </Text>
               </Flex>
-
               <Flex align="center" gap={1}>
                 <Icon as={FiClock} color="green.500" />
                 <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600" fontWeight="medium">
                   {formatTime(evento.fecha)}
                 </Text>
               </Flex>
-
               <Flex align="center" gap={1}>
                 <Icon as={FiMapPin} color="red.500" />
                 <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600" fontWeight="medium">
@@ -101,20 +85,12 @@ export const EventCard: React.FC<EventCardProps> = ({
               </Flex>
             </VStack>
           </VStack>
-        </Box>
-        <Box
-          pt="4"
-          pb="6"
-          px="6"
-          borderTop="1px"
-          borderColor="gray.100"
-        >
           <Flex
             w="100%"
             justify="space-between"
-            align="center"
             direction={'row'}
-            gap="3"
+            align="center"
+            py="3"
           >
             <Button
               colorScheme="blue"
@@ -136,7 +112,7 @@ export const EventCard: React.FC<EventCardProps> = ({
           </Flex>
         </Box>
       </Box>
-    // </Link>
+    </Link>
   );
 };
 

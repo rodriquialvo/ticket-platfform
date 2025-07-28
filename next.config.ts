@@ -13,6 +13,22 @@ const nextConfig: NextConfig = {
     // o si es un despliegue muy urgente.
     ignoreBuildErrors: true, // Esto hará que Vercel no falle el build por errores de TypeScript
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'imagenes.alpogo.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
